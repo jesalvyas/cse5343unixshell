@@ -1,3 +1,4 @@
+
 // Jesal Vyas
 // A simple shell for Unix
 
@@ -110,15 +111,10 @@ int main(int argc, char** argv) {
     else if (strcmp(command,"type")==0) {
       
       printf("command is type",command);
-      
-      
     } 
     else if (strcmp(command, "copy")==0) {
-      
     }
     else if (strcmp(command, "delete")==0) {
-    	
-
     }  
 }
 return 0;
