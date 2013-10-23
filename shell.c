@@ -5,22 +5,15 @@
 #include <string.h>
 #include <stdbool.h>
 
-
 void type(char* filename);
 void copy(char* source, char* dest);
 void delete(char* filename);
 int execute(char* filename);
 
-
-
 // Displays an error message on stdout
 void error(char* command) {
   printf("Command not found: %s\n", command);
 }
-
-
-
-
 void type(char* filename) {
 	
     FILE *fp = fopen(filename, "r");
@@ -43,7 +36,6 @@ void type(char* filename) {
 
 }
 
-
 void copy(char* source, char* dest) // Copies the bytes from `source` to `dest`
 {
    
@@ -52,12 +44,9 @@ void copy(char* source, char* dest) // Copies the bytes from `source` to `dest`
     
     char ch;     
     
+   fOut = fopen(dest, "w"); //opens dest for writing
     
-    fOut = fopen(dest, "w"); //opens dest for writing
-    
-     
     fIn = fopen(source, "r"); // opens source for reading
-    
     
     if(fIn == NULL)
     {
@@ -69,8 +58,6 @@ void copy(char* source, char* dest) // Copies the bytes from `source` to `dest`
         printf("error: file %s could not be created for writing!\n", dest);
         return;
     }
-    
-    
     while( (ch = fgetc(fIn)) != EOF)  // write content from source to dest
     {
         putc(ch,fOut);
@@ -80,8 +67,6 @@ void copy(char* source, char* dest) // Copies the bytes from `source` to `dest`
     fclose(fOut); // closes the output file
 }
 
-
-
 // Deletes a file named `filename`
 void delete(char* filename) {
    if(remove(filename) != 0)
@@ -90,13 +75,10 @@ void delete(char* filename) {
     }    
 
 }
-
-
 // Executes a program named `filename`
  int execute(char **argv) {
 pid_t pid;
 int status;
-
 
 if ((pid = fork()) < 0) {                 //fork a child process
 printf("forking child process failed\n");
@@ -111,12 +93,10 @@ return 0;
 } else {
                                       
 while (wait(&status) != pid) //waits for completion 
-;
+
 }
 return 1;
 }
-
-
 
 int main(int argc, char** argv) {
   printf("\n");
@@ -127,7 +107,6 @@ int main(int argc, char** argv) {
     if (strcmp(command,"exit")==0) {
       break;
     } 
-
     else if (strcmp(command,"type")==0) {
       
       printf("command is type",command);
@@ -140,12 +119,7 @@ int main(int argc, char** argv) {
     else if (strcmp(command, "delete")==0) {
     	
 
-    }
-  
+    }  
 }
 return 0;
 }
-
-
-
-
